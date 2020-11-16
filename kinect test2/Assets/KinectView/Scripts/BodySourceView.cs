@@ -1,25 +1,65 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 using Kinect = Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
 
 public class BodySourceView : MonoBehaviour 
 {
-    private BodySourceManager mBodySourceManager;
+    public BodySourceManager mBodySourceManager;
     public GameObject mJointObject;
 
+    
+    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>(); //weg
+
     private Dictionary<ulong, GameObject> mBodies = new Dictionary<ulong, GameObject>();
+    private BodySourceManager _BodyManager; //weg
+
     private List<Kinect.JointType> _joints = new List<Kinect.JointType>
     {
+        Kinect.JointType.HandLeft,
+        Kinect.JointType.HandRight,
         Kinect.JointType.Head,
     };
+    /*
+    private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
+    {
+        { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
+        { Kinect.JointType.AnkleLeft, Kinect.JointType.KneeLeft },
+        { Kinect.JointType.KneeLeft, Kinect.JointType.HipLeft },
+        { Kinect.JointType.HipLeft, Kinect.JointType.SpineBase },
+        
+        { Kinect.JointType.FootRight, Kinect.JointType.AnkleRight },
+        { Kinect.JointType.AnkleRight, Kinect.JointType.KneeRight },
+        { Kinect.JointType.KneeRight, Kinect.JointType.HipRight },
+        { Kinect.JointType.HipRight, Kinect.JointType.SpineBase },
+        
+        { Kinect.JointType.HandTipLeft, Kinect.JointType.HandLeft },
+        { Kinect.JointType.ThumbLeft, Kinect.JointType.HandLeft },
+        { Kinect.JointType.HandLeft, Kinect.JointType.WristLeft },
+        { Kinect.JointType.WristLeft, Kinect.JointType.ElbowLeft },
+        { Kinect.JointType.ElbowLeft, Kinect.JointType.ShoulderLeft },
+        { Kinect.JointType.ShoulderLeft, Kinect.JointType.SpineShoulder },
+        
+        { Kinect.JointType.HandTipRight, Kinect.JointType.HandRight },
+        { Kinect.JointType.ThumbRight, Kinect.JointType.HandRight },
+        { Kinect.JointType.HandRight, Kinect.JointType.WristRight },
+        { Kinect.JointType.WristRight, Kinect.JointType.ElbowRight },
+        { Kinect.JointType.ElbowRight, Kinect.JointType.ShoulderRight },
+        { Kinect.JointType.ShoulderRight, Kinect.JointType.SpineShoulder },
+        
+        { Kinect.JointType.SpineBase, Kinect.JointType.SpineMid },
+        { Kinect.JointType.SpineMid, Kinect.JointType.SpineShoulder },
+        { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
+        { Kinect.JointType.Neck, Kinect.JointType.Head },
+    };*/
     
     void Update () 
     {
         #region Get Kinect Data
         Kinect.Body[] data = mBodySourceManager.GetData();
-        if(data == null)
+        if (data == null)
         {
             return;
         }
@@ -33,8 +73,7 @@ public class BodySourceView : MonoBehaviour
             if (body.IsTracked)
                 trackedIds.Add(body.TrackingId);
         }
-            #endregion
-
+        #endregion
         #region Delete Kinect bodies
         List<ulong> knownIds = new List<ulong>(mBodies.Keys);
         foreach (ulong trackingId in knownIds)
@@ -47,7 +86,6 @@ public class BodySourceView : MonoBehaviour
             }
         }
         #endregion
-
         #region Create Kinect bodies
         foreach (var body in data)
         {
@@ -59,26 +97,27 @@ public class BodySourceView : MonoBehaviour
                 if (!mBodies.ContainsKey(body.TrackingId))
                     mBodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
 
-                
+
                 UpdateBodyObject(body, mBodies[body.TrackingId]);
             }
 
         }
         #endregion
+
     }
 
     private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
-        
-        foreach (JointType joint in _joints)
+
+        foreach (Kinect.JointType joint in _joints)
         {
             GameObject newJoint = Instantiate(mJointObject);
             newJoint.name = joint.ToString();
 
             newJoint.transform.parent = body.transform;
         }
-        
+
         return body;
     }
 
@@ -93,7 +132,8 @@ public class BodySourceView : MonoBehaviour
             Transform jointObject = bodyObjects.transform.Find(_joint.ToString());
             jointObject.position = targetPosition;
         }
-    }    
+    }
+    
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
         return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
