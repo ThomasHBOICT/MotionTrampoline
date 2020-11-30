@@ -11,10 +11,10 @@ public class BodySourceView : MonoBehaviour
     public GameObject mJointObject;
 
     
-    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>(); //weg
+    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>(); //can be deleted
 
     private Dictionary<ulong, GameObject> mBodies = new Dictionary<ulong, GameObject>();
-    private BodySourceManager _BodyManager; //weg
+    private BodySourceManager _BodyManager; //can be deleted
 
     private List<Kinect.JointType> _joints = new List<Kinect.JointType>
     {
