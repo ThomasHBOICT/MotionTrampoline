@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoordinateFinder : MonoBehaviour
 {
     public float coordinate;
+    public FloatValue height;
 
     private GameObject head;
 
@@ -18,6 +19,7 @@ public class CoordinateFinder : MonoBehaviour
         if(head != null)
         {
             coordinate = head.transform.position.y;
+            height.@float = coordinate;
         }
     }
 }

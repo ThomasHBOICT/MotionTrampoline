@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CalculateVelocity : MonoBehaviour
 {
-    public Vector3 vel;
+    private Vector3 vel;
     public FloatValue velocity;
 
     private Vector3 _prevPosition;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamerHeightChanger : MonoBehaviour
 {
-    public CoordinateFinder coords;
+    public FloatValue coords;
     public float offset;
     public float multiplier;
 
@@ -18,6 +18,6 @@ public class CamerHeightChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = startPos + new Vector3(0, coords.coordinate * multiplier + offset, 0);
+        gameObject.transform.position = startPos + new Vector3(0, coords.@float * multiplier + offset, 0);
     }
 }
