@@ -22,15 +22,15 @@ public class fanscontroller : MonoBehaviour
     {
         if (velocity.@float > 0)
         {
-            onLed();
+            onFan();
         }
         else
         {
-            offLed();
+            offFan();
         }
     }
 
-    public void onLed()
+    public void onFan()
     {
         if (serial.IsOpen == false)
         {
@@ -41,7 +41,7 @@ public class fanscontroller : MonoBehaviour
         lightState = true;
     }
 
-    public void offLed()
+    public void offFan()
     {
         if (serial.IsOpen == false)
         {
