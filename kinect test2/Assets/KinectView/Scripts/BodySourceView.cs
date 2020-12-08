@@ -7,6 +7,8 @@ using Joint = Windows.Kinect.Joint;
 
 public class BodySourceView : MonoBehaviour 
 {
+
+    public bool bodyFound;
     public BodySourceManager mBodySourceManager;
     public GameObject mJointObject;
 
@@ -61,9 +63,10 @@ public class BodySourceView : MonoBehaviour
         Kinect.Body[] data = mBodySourceManager.GetData();
         if (data == null)
         {
+            bodyFound = false;
             return;
         }
-
+        bodyFound = true;
         List<ulong> trackedIds = new List<ulong>();
         foreach (var body in data)
         {
