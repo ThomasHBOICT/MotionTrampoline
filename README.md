@@ -1,6 +1,6 @@
 # Motion Trampoline
 
-Unity workfile working with Kinect to create a jumping experience for Motion.
+Unity workfile connecting with Kinect and Arduino to create a trampoline jumping experience for Motion.
 
 ## Installation
 
@@ -47,6 +47,16 @@ When moving the cameras, move CameraHeight parent so the cameras stay together w
 You can change the jumping factor from real life to in game by changing the multiplier on CameraHeight. You can also change the offset on the y axis, which can be useful when the kinect is in a fixed position.
 
 ![cameraSettings](ReadmeImages/camerasettingsreadme.PNG)
+
+
+For the Arduino connection you will need to locate the right USB port you are using. This can be done in the device manager:
+
+![USBPort](ReadmeImages/portreadme.PNG)
+
+COM5 needs to be replaced by the port you are using.
+```C#
+public SerialPort serial = new SerialPort("COM5", 9600);
+```
 
 ## Contributing
 Thomas Dwarshuis (Kinect connection and code)
