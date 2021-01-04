@@ -8,7 +8,7 @@ Download ```MotionTrampoline``` folder and open with Unity version 2020.1.3f1.
 
 ## Usage
 
-Put any joint name in the List in BodySourceView.cs script for the Kinect to track:
+Put any joint name in the List in ```BodySourceView.cs``` script for the Kinect to track:
 
 ```C#
     private List<Kinect.JointType> _joints = new List<Kinect.JointType>
@@ -53,7 +53,7 @@ For the Arduino connection you will need to locate the right USB port you are us
 
 ![USBPort](ReadmeImages/portreadme.PNG)
 
-COM5 needs to be replaced by the port you are using.
+COM5 in ```fanscontroller.cs``` needs to be replaced by the port you are using.
 ```C#
 public SerialPort serial = new SerialPort("COM5", 9600);
 ```
