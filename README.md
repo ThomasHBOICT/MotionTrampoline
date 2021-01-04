@@ -19,7 +19,7 @@ Put any joint name in the List in BodySourceView.cs script for the Kinect to tra
     };
 ```
 
-For finding the coordinates of the head (or any other joint) from the Kinect in CoordinateFinder.cs script:
+This scripts finds the coordinates the BodySourceView script generates. In this case the head's coordinates are used for the height of the camera.
 ```C#
     public float coordinate;
 
