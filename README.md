@@ -8,6 +8,7 @@ Download ```MotionTrampoline``` folder and open with Unity version 2020.1.3f1.
 
 ## Usage
 
+### Joints
 Put any joint name in the List in ```BodySourceView.cs``` script for the Kinect to track:
 
 ```C#
@@ -39,6 +40,7 @@ This scripts finds the coordinates the ```BodySourceView``` script generates. In
     }
 ```
 
+### Cameras
 
 When moving the cameras, move ```CameraHeight``` parent so the cameras stay together with eachother and the audioSource.
 
@@ -48,6 +50,7 @@ You can change the jumping factor from real life to in game by changing the mult
 
 ![cameraSettings](ReadmeImages/camerasettingsreadme.PNG)
 
+### Arduino
 
 For the Arduino connection you will need to locate the right USB port you are using. This can be done in the device manager:
 
