@@ -4,7 +4,7 @@ Unity workfile working with Kinect to create a jumping experience for Motion.
 
 ## Installation
 
-Download kinect test2 folder and open with Unity version 2020.1.3f1.
+Download ```MotionTrampoline``` folder and open with Unity version 2020.1.3f1.
 
 ## Usage
 
