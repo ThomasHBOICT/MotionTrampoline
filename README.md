@@ -39,6 +39,13 @@ This scripts finds the coordinates the BodySourceView script generates. In this 
     }
 ```
 
+
+When moving the camera's, move CameraHeight parent.
+<img src="ReadmeImages/camerasreadme.png">
+
+
+![](/ReadmeImages/camerasreadme.png)
+
 ## Contributing
 Thomas Dwarshuis (Kinect connection and code)
 
