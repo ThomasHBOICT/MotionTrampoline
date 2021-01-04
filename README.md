@@ -41,4 +41,5 @@ This scripts finds the coordinates the BodySourceView script generates. In this 
 
 ## Contributing
 Thomas Dwarshuis (Kinect connection and code)
+
 Dimitri van Iersel (Arduino connection and audio)
