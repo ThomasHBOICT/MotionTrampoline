@@ -19,7 +19,7 @@ Put any joint name in the List in ```BodySourceView.cs``` script for the Kinect 
     };
 ```
 
-This scripts finds the coordinates the BodySourceView script generates. In this case the head's coordinates are used for the height of the camera.
+This scripts finds the coordinates the ```BodySourceView``` script generates. In this case the head's coordinates are used for the height of the camera.
 ```C#
     public float coordinate;
 
@@ -40,11 +40,11 @@ This scripts finds the coordinates the BodySourceView script generates. In this 
 ```
 
 
-When moving the cameras, move CameraHeight parent so the cameras stay together with eachother and the audioSource.
+When moving the cameras, move ```CameraHeight``` parent so the cameras stay together with eachother and the audioSource.
 
 ![cameraToMove](ReadmeImages/camerasreadme.PNG)
 
-You can change the jumping factor from real life to in game by changing the multiplier on CameraHeight. You can also change the offset on the y axis, which can be useful when the kinect is in a fixed position.
+You can change the jumping factor from real life to in game by changing the multiplier on ```CameraHeight```. You can also change the offset on the y axis, which can be useful when the kinect is in a fixed position.
 
 ![cameraSettings](ReadmeImages/camerasettingsreadme.PNG)
 
