@@ -20,9 +20,10 @@ Put any joint name in the List in `BodySourceView.cs` script for the Kinect to t
     };
 ```
 
-This scripts finds the coordinates the `BodySourceView` script generates. In this case the head's coordinates are used for the height of the camera.
+`CoordinateFinder.cs` finds the coordinates the `BodySourceView` script generates. In this case the head's coordinates are used for the height of the camera.
 ```C#
     public float coordinate;
+    public FloatValue height;
 
     private GameObject head;
 
@@ -36,6 +37,7 @@ This scripts finds the coordinates the `BodySourceView` script generates. In thi
         if(head != null)
         {
             coordinate = head.transform.position.y;
+            height.@float = coordinate;
         }
     }
 ```
